@@ -1,0 +1,36 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  recovery_builder:
+    runs-on: ubuntu-latest
+    # You can use either of the ubuntu-18.04 or ubuntu-20.04 runner
+    steps:
+      # Checking out the repo is not mandatory, so don't
+      #- uses: actions/checkout@v2
+      # Cleanup The Actions Workspace Using Custom Composite Run Actions
+      - name: "Cleanup Environment"
+        uses: rokibhasansagar/slimhub_actions@main
+      # That's it! Now use this action
+      - name: "Recovery Compilation"
+        uses: CarbonatedBlack/Recovery-Compiler@production
+        env:
+          MANIFEST: "orangefox7.1"     # or "orangefox10" for Orangefox Android v10
+          DT_LINK: "https://github.com/gtskhadadze83/android_device_Medion_Lifetab_P850x"
+          VENDOR: "Medion"  # Example: xiaomi, samsung, asus, etc.
+          CODENAME: "P850x"   # Example: nikel, phoenix, ginkg
+          TARGET: "recoveryimage"
+          FLAVOR: "userdebug"
+          TZ: "Europe/Berlin"           # Set Time-Zone According To Your Region
