@@ -27,7 +27,7 @@ jobs:
       - name: "Recovery Compilation"
         uses: CarbonatedBlack/Recovery-Compiler@production
         env:
-          MANIFEST: "https://gitlab.com/OrangeFox/Manifest -b fox_7.1"     # or "orangefox10" for Orangefox Android v10
+          MANIFEST: "orangefox7.1"     # or "orangefox10" for Orangefox Android v10
           DT_LINK: "https://github.com/gtskhadadze83/android_device_Medion_Lifetab_P850x"
           VENDOR: "Medion"  # Example: xiaomi, samsung, asus, etc.
           CODENAME: "P850x"   # Example: nikel, phoenix, ginkg
